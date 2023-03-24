@@ -1,1 +1,1 @@
-# .emacs.d
+# My eMacs config
