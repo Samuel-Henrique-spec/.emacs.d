@@ -5,6 +5,8 @@
 
 ;; Remove menus
 ;;(menu-bar-mode -1)
+;;(scroll-bar-mode -1)
+;;(tool-bar-mode -1)
 ;;Retirei as configs pois uso o emacs terminal 
 
 ;;Números das linhas
