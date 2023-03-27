@@ -1,4 +1,7 @@
 ;;Configuração do Emacs
+;;Realce de sintaxe
+;;(setq font-lock-mode t)
+
 
 ;; Remove welcome message
 (setq inhibit-startup-message t)
