@@ -1,7 +1,7 @@
 ;;Configuração do Emacs
 ;;Realce de sintaxe
 ;;(setq font-lock-mode t)
-
+;;Adicionar gruber-darker-theme
 
 ;; Remove welcome message
 (setq inhibit-startup-message t)
