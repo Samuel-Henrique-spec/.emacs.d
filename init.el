@@ -2,6 +2,7 @@
 ;;Realce de sintaxe
 ;;(setq font-lock-mode t)
 ;;Adicionar gruber-darker-theme
+;;Adicionar csharp-mode
 
 ;; Remove welcome message
 (setq inhibit-startup-message t)
