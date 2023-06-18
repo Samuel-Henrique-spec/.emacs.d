@@ -21,6 +21,9 @@
 
 ;;Font size
 (set-face-attribute 'default nil :height 150)
+;;Font type
+(set-frame-font "Iosevka 15" nil t)
+
 
 ;;Packages
 (require 'package)
@@ -37,31 +40,22 @@
   (package-install 'use-package))
 
 ;;Auto complete
-(use-package auto-complete
-  :ensure t
-  :init
-  (progn
-    (ac-config-default)
-    (global-auto-complete-mode t)))
+;;(use-package auto-complete
+  ;;:ensure t
+  ;;:init
+  ;;(progn
+    ;;(ac-config-default)
+    ;;(global-auto-complete-mode t)))
 
 ;;neoTree
 (use-package neotree
   :ensure t
   :bind (("C-\\". 'neotree-toggle)))
 
-;;Tema
-(use-package almost-mono-themes
-  :config
-  (load-theme 'almost-mono-cream t))
-
 ;;Atalhos personalizados
 (global-set-key (kbd "C-<tab>") 'other-window);Window navgate
 (global-set-key (kbd "M-<left>") 'enlarge-window-horizontally)
 (global-set-key (kbd "M-<right>") 'shrink-window-horizontally)
-
-;;Tecla TAB
-(global-set-key (kbd "TAB") 'self-insert-command);
-
 
 ;;Melpa stuff
 (custom-set-variables
@@ -73,11 +67,30 @@
  '(custom-safe-themes
 	 '("bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" default))
  '(package-selected-packages
-	 '(csharp-mode gruber-darker-theme almost-mono-theme almost-mono-themes use-package))
- '(warning-suppress-types '((use-package))))
+	 '(lsp-mode flycheck csharp-mode gruber-darker-theme almost-mono-theme almost-mono-themes use-package))
+ '(warning-suppress-log-types '((use-package) (comp) (use-package) (use-package)))
+ '(warning-suppress-types '((comp) (use-package) (use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+;;Omnisharp
+(use-package omnisharp
+	:after company
+	:config
+	(add-hook 'csharp-mode 'omnisharp-mode)
+	(add-to-list 'company-backends 'company-omnisharp))
+
+(define-key omnisharp-mode (kbd ".") 'omnisharp-add-dot-and-auto-complete)
+(define-key omnisharp-mode (kbd "<C-SPC>") 'omnisharp-auto-complete)
+
+;;(add-hook 'csharp-mode-hook 'flycheck-mode)
+(add-hook 'prog-mode-hook 'flycheck-mode)
+
+(use-package projectile
+	:config
+	(projectile-mode))
